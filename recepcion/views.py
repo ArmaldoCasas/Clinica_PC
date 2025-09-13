@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 equipos =[]
 
 def registrar_equipo(request):
+    if not request.session.get('autenticado'):
+        return redirect('login_view')
+
     mensaje = None
 
     if request.method == 'POST':
@@ -36,6 +39,7 @@ def detalle_equipo(request, nombre):
 def menu_recepcion(request):
     return render(request, "recepcion/menu.html")
 
-
-
+def logout_view(request):
+    request.session.flush()
+    return redirect('login_view')
 # Create your views here.
