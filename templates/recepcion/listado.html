@@ -1,0 +1,20 @@
+<h2>Listado de Equipos</h2>
+<table class="table" border="1">
+  <tr>
+    <th>Cliente</th>
+    <th>Equipo</th>
+    <th>Problema</th>
+    <th>Detalle</th>
+  </tr>
+{% for e in equipos %}
+<tr>
+    <td>{{ e.nombre }}</td>
+    <td>{{ e.equipo }}</td>
+    <td>{{ e.problema }}</td>
+    <td>
+        <a href="{% url 'detalle_equipo' e.nombre %}" class="btn btn-secondary">Ver detalle</a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>

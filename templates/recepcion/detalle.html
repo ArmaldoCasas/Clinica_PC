@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Registrar{% endblock %}
+{% block content %}
+<h2>Detalle del Equipo</h2>
+{% if equipo %}
+  <p><strong>Cliente:</strong> {{ equipo.nombre }}</p>
+  <p><strong>Equipo:</strong> {{ equipo.equipo }}</p>
+  <p><strong>Problema:</strong> {{ equipo.problema }}</p>
+{% else %}
+  <p>No se encontró el equipo.</p>
+{% endif %}
+
+
+
+
+{% endblock %}

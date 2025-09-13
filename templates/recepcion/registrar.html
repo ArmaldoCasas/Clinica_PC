@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Registrar{% endblock %}
+{% block content %}
+<h2>Bienvenido al Inicio de Sesion</h2>
+
+ {% if mensaje %}
+        <p style="color:green;">{{ mensaje }}</p>
+    {% endif %}
+<form class="mb-4" method="post">
+    {% csrf_token %}
+    <input type="text" name="nombre" id="nombre" placeholder="Nombre"> 
+    <input type="text" name="equipo" id="equipo" placeholder="Equipo">
+    <input type="text" name="problema" id="problema" placeholder="Problema">
+    <button type="submit" class="btn btn-secondary">Enviar</button>
+    <li><a href="{% url 'menu_recepcion' %}" class="btn btn-primary">Ir al menu</a></li>
+   
+    
+</form>
+
+
+
+
+
+{% endblock %}

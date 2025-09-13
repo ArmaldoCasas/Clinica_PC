@@ -8,7 +8,7 @@ def login_view(request):
         password = request.POST.get('password')
         if usuario == "inacap" and password == "clinica2025":
             request.session['autenticado'] = True
-            return redirect('/recepcion/registrar.html')
+            return redirect('/recepcion/registrar/')
         else:
             error = "Usuario o clave incorrectos intentelo otra vez."
             
