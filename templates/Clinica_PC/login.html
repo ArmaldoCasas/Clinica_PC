@@ -4,14 +4,13 @@
 <h2>Bienvenido al Inicio de Sesion</h2>
 
  {% if error %}
-        <p style="color:red;">{{ error }}</p>
+    <p style="color:red;">{{ error }}</p>
     {% endif %}
 <form class="mb-4" method="post">
     {% csrf_token %}
     <input type="text" name="usuario" id="usuario" placeholder="Usuario"> 
     <input type="password" name="password" id="password" placeholder="Contraseña">
     <button type="submit" class="btn btn-secondary">Enviar</button>
-    
 </form>
 
 

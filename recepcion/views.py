@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 equipos =[]
 
 def registrar_equipo(request):
+    if not request.session.get('autenticado'):
+        return redirect('login_view')
+
     mensaje = None
 
     if request.method == 'POST':
@@ -22,9 +25,13 @@ def registrar_equipo(request):
     return render(request, 'recepcion/registrar.html')
 
 def listado_equipos(request):
+    if not request.session.get('autenticado'):
+        return redirect('login_view')
     return render(request, 'recepcion/listado.html', {'equipos': equipos})
 
 def detalle_equipo(request, nombre):
+    if not request.session.get('autenticado'):
+        return redirect('login_view')
     equipo = None
     for e in equipos:
         if e['nombre'] == nombre:
@@ -34,8 +41,11 @@ def detalle_equipo(request, nombre):
 
 
 def menu_recepcion(request):
+    if not request.session.get('autenticado'):
+        return redirect('login_view')
     return render(request, "recepcion/menu.html")
 
-
-
+def logout_view(request):
+    request.session.flush()
+    return redirect('login_view')
 # Create your views here.
