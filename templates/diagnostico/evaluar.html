@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Registrar{% endblock %}
+{% block content %}
+<h2>Por favor registre su problema</h2>
+
+ {% if mensaje %}
+        <p style="color:green;">{{ mensaje }}</p>
+    {% endif %}
+<form class="mb-4" method="post">
+    {% csrf_token %}
+    <input type="text" name="estudiante" id="estudiante" placeholder="Estudiante"> 
+    <input type="text" name="equipo" id="equipo" placeholder="Equipo">
+    <input type="text" name="diagnostico" id="diagnostico" placeholder="Diagnostico"> 
+    <input type="text" name="solucion" id="solucion" placeholder="Solucion">
+    <select name="tipo">
+        <option value="correctiva">Correctiva</option>
+        <option value="preventiva">Preventiva</option>
+    </select>
+    <button type="submit" class="btn btn-secondary">Enviar</button>
+
+
+    
+</form>
+
+{% endblock %}
