@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Listado de Diagnósticos</h2>
+<table border="1">
+    <tr>
+        <th>Estudiante</th>
+        <th>Equipo</th>
+        <th>Diagnóstico</th>
+        <th>Solución</th>
+        <th>Tipo</th>
+    </tr>
+    {% for diagnostico in diagnosticos %}
+    <tr>
+        <td>{{ diagnostico.estudiante }}</td>
+        <td>{{ diagnostico.equipo }}</td>
+        <td>{{ diagnostico.diagnostico }}</td>
+        <td>{{ diagnostico.solucion }}</td>
+        <td>
+            {% if diagnostico.tipo == "correctiva" %}
+                Correctiva
+            {% else %}
+                Preventiva
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

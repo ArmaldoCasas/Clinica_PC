@@ -6,13 +6,13 @@
     <th>Problema</th>
     <th>Detalle</th>
   </tr>
-{% for e in equipos %}
+{% for equipo in equipos %}
 <tr>
-    <td>{{ e.nombre }}</td>
-    <td>{{ e.equipo }}</td>
-    <td>{{ e.problema }}</td>
+    <td>{{ equipo.nombre }}</td>
+    <td>{{ equipo.equipo }}</td>
+    <td>{{ equipo.problema }}</td>
     <td>
-        <a href="{% url 'detalle_equipo' e.nombre %}" class="btn btn-secondary">Ver detalle</a>
+        <a href="{% url 'detalle_equipo' equipo.nombre %}" class="btn btn-secondary">Ver detalle</a>
     </td>
 </tr>
 {% endfor %}
