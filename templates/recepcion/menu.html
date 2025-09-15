@@ -4,12 +4,40 @@
 {% block content %}
 <h2>Menu de Recepción</h2>
 
-<ul>
-    <li><a href="{% url 'registrar_equipo' %}" class="btn btn-primary">Registrar Equipo</a></li>
-    <li><a href="{% url 'listado_equipos' %}" class="btn btn-secondary">Listado de Equipos</a></li>
-    <li><a href="{% url 'asignar_diagnostico' %}" class="btn btn-secondary">Asignar Diagnóstico</a></li>
-    <li><a href="{% url 'evaluar_diagnostico' %}" class="btn btn-secondary">Evaluar Diagnóstico</a></li>
-    <li><a href="{% url 'listado_diagnosticos' %}" class="btn btn-secondary">Listado de Diagnósticos</a></li>
-
-</ul>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Recepción</h5>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'registrar_equipo' %}" class="btn btn-primary d-block mb-2">Registrar Equipo</a>
+                <a href="{% url 'listado_equipos' %}" class="btn btn-primary d-block">Listado de Equipos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Diagnóstico</h5>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'evaluar_diagnostico' %}" class="btn btn-success d-block mb-2">Evaluar Diagnóstico</a>
+                <a href="{% url 'listado_diagnosticos' %}" class="btn btn-success d-block">Listado de Diagnósticos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Entrega</h5>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'verificar_entrega' %}" class="btn btn-info d-block mb-2">Verificar Entrega</a>
+                <a href="{% url 'reporte_entrega' %}" class="btn btn-info d-block mb-2">Reporte de Entregas</a>
+                <a href="{% url 'comprobante' %}" class="btn btn-info d-block">Comprobantes</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

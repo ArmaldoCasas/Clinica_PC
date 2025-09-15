@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{%block title %}Comprobante de Entrega{% endblock %}  
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Comprobantes de Entrega</h2>
+    </div>
+    <div class="card-body">
+        {% if entregas %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Equipo</th>
+                    <th>Diagnóstico</th>
+                    <th>Solución</th>
+                    <th>Estado</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entrega in entregas %}
+                <tr>
+                    <td>{{ entrega.cliente }}</td>
+                    <td>{{ entrega.equipo }}</td>
+                    <td>{{ entrega.diagnostico }}</td>
+                    <td>{{ entrega.solucion }} {{ entrega.tipo }}</td>
+                    <td>{{ entrega.estado }}</td>
+                    <td>{{ entrega.observaciones }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No hay comprobantes de entrega registrados.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
