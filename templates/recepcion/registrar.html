@@ -1,21 +1,33 @@
 {% extends "base.html" %}
-{% block title %}Registrar{% endblock %}
+{% block title %}Registrar equipo{% endblock %}
 {% block content %}
-<h2>Por favor registre su problema</h2>
-
- {% if mensaje %}
-        <p style="color:green;">{{ mensaje }}</p>
-    {% endif %}
-<form class="mb-4" method="post">
-    {% csrf_token %}
-    <input type="text" name="nombre" id="nombre" placeholder="Nombre"> 
-    <input type="text" name="equipo" id="equipo" placeholder="Equipo">
-    <input type="text" name="problema" id="problema" placeholder="Problema">
-    <button type="submit" class="btn btn-secondary">Enviar</button>
-    <li><a href="{% url 'menu_recepcion' %}" class="btn btn-primary">Ir al menu</a></li>
-    <a href="{% url 'logout_view' %}" class="btn btn-danger">Cerrar sesión</a>
-
-    
-</form>
-
+<div class="card">
+    <div class="card-header">
+        <h2>Por favor registre su problema</h2>
+    </div>
+    <div class="card-body">
+        {% if mensaje %}
+        <div class="alert alert-success" role="alert">
+            {{ mensaje }}
+        </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="cliente" class="form-label">Nombre del Cliente</label>
+                <input type="text" name="cliente" id="cliente" class="form-control" placeholder="Nombre del Cliente" required>
+            </div>
+            <div class="mb-3">
+                <label for="equipo" class="form-label">Equipo</label>
+                <input type="text" name="equipo" id="equipo" class="form-control" placeholder="Equipo" required>
+            </div>
+            <div class="mb-3">
+                <label for="problema" class="form-label">Problema</label>
+                <input type="text" name="problema" id="problema" class="form-control" placeholder="Problema" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

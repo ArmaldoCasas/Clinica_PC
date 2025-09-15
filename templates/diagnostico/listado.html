@@ -1,28 +1,33 @@
 {% extends "base.html" %}
+{% block title %}Listado de Diagnósticos{% endblock %}
 {% block content %}
 <h2>Listado de Diagnósticos</h2>
-<table border="1">
-    <tr>
-        <th>Estudiante</th>
-        <th>Equipo</th>
-        <th>Diagnóstico</th>
-        <th>Solución</th>
-        <th>Tipo</th>
-    </tr>
-    {% for diagnostico in diagnosticos %}
-    <tr>
-        <td>{{ diagnostico.estudiante }}</td>
-        <td>{{ diagnostico.equipo }}</td>
-        <td>{{ diagnostico.diagnostico }}</td>
-        <td>{{ diagnostico.solucion }}</td>
-        <td>
-            {% if diagnostico.tipo == "correctiva" %}
-                Correctiva
-            {% else %}
-                Preventiva
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Estudiante</th>
+            <th>Equipo</th>
+            <th>Diagnóstico</th>
+            <th>Solución</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for diagnostico in diagnosticos %}
+        <tr>
+            <td>{{ diagnostico.estudiante }}</td>
+            <td>{{ diagnostico.equipo }}</td>
+            <td>{{ diagnostico.diagnostico }}</td>
+            <td>{{ diagnostico.solucion }}</td>
+            <td>
+                {% if diagnostico.tipo == "correctiva" %}
+                    Correctiva
+                {% else %}
+                    Preventiva
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 {% endblock %}

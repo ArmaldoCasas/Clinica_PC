@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "Clinica_PC",
     "login",
     "recepcion",
+    "diagnostico",
+    "entrega",
 ]
 
 MIDDLEWARE = [

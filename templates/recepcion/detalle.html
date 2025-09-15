@@ -1,16 +1,18 @@
 {% extends "base.html" %}
-{% block title %}Registrar{% endblock %}
+{% block title %}Detalle Equipo{% endblock %}
 {% block content %}
-<h2>Detalle del Equipo</h2>
-{% if equipo %}
-  <p><strong>Cliente:</strong> {{ equipo.nombre }}</p>
-  <p><strong>Equipo:</strong> {{ equipo.equipo }}</p>
-  <p><strong>Problema:</strong> {{ equipo.problema }}</p>
-{% else %}
-  <p>No se encontró el equipo.</p>
-{% endif %}
-
-
-
-
+<div class="card">
+    <div class="card-header">
+        <h2>Detalle del Equipo</h2>
+    </div>
+    <div class="card-body">
+        {% if equipo %}
+        <p><strong>Cliente:</strong> {{ equipo.cliente }}</p>
+        <p><strong>Equipo:</strong> {{ equipo.equipo }}</p>
+        <p><strong>Problema:</strong> {{ equipo.problema }}</p>
+        {% else %}
+        <p>No se encontró información del equipo.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

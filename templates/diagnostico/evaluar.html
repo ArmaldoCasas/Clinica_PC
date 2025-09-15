@@ -1,25 +1,49 @@
 {% extends "base.html" %}
-{% block title %}Registrar{% endblock %}
+{% block title %}Evaluar Diagnóstico{% endblock %}
 {% block content %}
-<h2>Por favor registre su problema</h2>
 
- {% if mensaje %}
-        <p style="color:green;">{{ mensaje }}</p>
-    {% endif %}
-<form class="mb-4" method="post">
-    {% csrf_token %}
-    <input type="text" name="estudiante" id="estudiante" placeholder="Estudiante"> 
-    <input type="text" name="equipo" id="equipo" placeholder="Equipo">
-    <input type="text" name="diagnostico" id="diagnostico" placeholder="Diagnostico"> 
-    <input type="text" name="solucion" id="solucion" placeholder="Solucion">
-    <select name="tipo">
-        <option value="correctiva">Correctiva</option>
-        <option value="preventiva">Preventiva</option>
-    </select>
-    <button type="submit" class="btn btn-secondary">Enviar</button>
-
-
-    
-</form>
-
+<div class="card">
+    <div class="card-header">
+        <h2>Evaluar Diagnóstico</h2>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="estudiante" class="form-label">Nombre del Estudiante</label>
+                <input type="text" name="estudiante" id="estudiante" class="form-control" placeholder="Nombre del Estudiante" required>
+            </div>
+            <div class="mb-3">
+                <label for="equipo" class="form-label">Equipo</label>
+                <select name="equipo" id="equipo" class="form-select" required>
+                    <option value="">Seleccione un equipo</option>
+                    {% for e in recepcion_equipos %}
+                        <option value="{{ e.equipo }}">{{ e.cliente }}/{{ e.equipo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="diagnostico" class="form-label">Diagnóstico</label>
+                <input name="diagnostico" id="diagnostico" class="form-control" placeholder="Diagnóstico"  required></input>
+            </div>
+            <div class="mb-3">
+                <label for="solucion" class="form-label">Solución</label>
+                <input name="solucion" id="solucion" class="form-control" placeholder="Solución" required></input>
+            </div>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo</label>
+                <select name="tipo" id="tipo" class="form-select" required>
+                    <option value="correctiva">Correctiva</option>
+                    <option value="preventiva">Preventiva</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Diagnóstico</button>
+        </form>
+        {% if mensaje %}
+        <div class="alert alert-success mt-3" role="alert">
+            {{ mensaje }}
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

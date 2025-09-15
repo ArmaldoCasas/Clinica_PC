@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Reporte de entregas{% endblock  %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Reporte de Entrega</h2>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="cliente" class="form-label">Cliente</label>
+                <input type="text" name="cliente" id="cliente" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="estado" class="form-label">Estado de la entrega</label>
+                <select name="estado" id="estado" class="form-select" required>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="entregado">Entregado</option>
+                    <option value="devuelto">Devuelto</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="observaciones" class="form-label">Observaciones</label>
+                <textarea name="observaciones" id="observaciones" class="form-control"="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar entrega</button>
+        </form>
+
+        {% if mensaje %}
+        <div class="alert alert-info mt-3" role="alert">
+            {{ mensaje }}
+            {% if equipo %}
+            <br><a href="{% url 'comprobante' %}" class="btn btn-secondary mt-2">Ver Comprobante</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 
