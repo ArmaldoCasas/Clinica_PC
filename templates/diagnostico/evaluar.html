@@ -9,6 +9,7 @@
     <div class="card-body">
         <form method="post">
             {% csrf_token %}
+            {{form.as_p}}
             <div class="mb-3">
                 <label for="estudiante" class="form-label">Nombre del Estudiante</label>
                 <input type="text" name="estudiante" id="estudiante" class="form-control" placeholder="Nombre del Estudiante" required>

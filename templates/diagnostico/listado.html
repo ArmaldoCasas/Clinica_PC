@@ -6,6 +6,7 @@
     <thead class="table-dark">
         <tr>
             <th>Estudiante</th>
+            <th>Cliente</th>  
             <th>Equipo</th>
             <th>Diagnóstico</th>
             <th>Solución</th>
@@ -16,14 +17,15 @@
         {% for diagnostico in diagnosticos %}
         <tr>
             <td>{{ diagnostico.estudiante }}</td>
-            <td>{{ diagnostico.equipo }}</td>
+            <td>{{ diagnostico.equipo.cliente }}</td>  
+            <td>{{ diagnostico.equipo.equipo }}</td>  
             <td>{{ diagnostico.diagnostico }}</td>
             <td>{{ diagnostico.solucion }}</td>
             <td>
-                {% if diagnostico.tipo == "correctiva" %}
-                    Correctiva
+                {% if diagnostico.tipo == "correctivo" %}
+                    Correctivo
                 {% else %}
-                    Preventiva
+                    Preventivo
                 {% endif %}
             </td>
         </tr>
