@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-tc55@0eek40p(nd6qr)r!w6qcq@ejalquu&%cb%*x@4e+6r2bk'
@@ -80,8 +83,12 @@ WSGI_APPLICATION = 'Clinica_PC.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': config('MI_ENGINE'),
+        'NAME': config("MI_NAME"),
+        "USER": config("MI_USER"),
+        "PASSWORD":config("MI_PASSWORD"),
+        "HOST":config("MI_HOST"),
+        "PORT":config("MI_PORT")
     }
 }
 
