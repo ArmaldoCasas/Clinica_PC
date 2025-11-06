@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-tc55@0eek40p(nd6qr)r!w6qcq@ejalquu&%cb%*x@4e+6r2bk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
     
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['clinica-pc-1.onrender.com',]
 
 
 # Application definition
