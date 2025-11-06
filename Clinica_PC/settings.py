@@ -84,16 +84,15 @@ WSGI_APPLICATION = 'Clinica_PC.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default':dj_database_url.config(
-        {
+    'default': {
         'ENGINE': config('MI_ENGINE'),
         'NAME': config("MI_NAME"),
         "USER": config("MI_USER"),
-        "PASSWORD":config("MI_PASSWORD"),
-        "HOST":config("MI_HOST"),
-        "PORT":config("MI_PORT")
+        "PASSWORD": config("MI_PASSWORD"),
+        "HOST": config("MI_HOST"),
+        "PORT": config("MI_PORT", cast=int), # Asegúrate de convertir el puerto a entero
     }
-)}
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
