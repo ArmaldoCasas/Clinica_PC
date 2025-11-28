@@ -7,7 +7,7 @@ TIPO_DIAGNOSTICO_CHOICES = [
 ]
 class Estudiante(models.Model):
         estudiante=models.CharField(max_length=50)
-        equipo = models.ForeignKey(Paciente,on_delete=models.CASCADE,related_name="Equipo_diagnosticado")
+        equipo = models.OneToOneField(Paciente,on_delete=models.CASCADE,related_name="Equipo_diagnosticado")
         diagnostico=models.CharField(max_length=50)
         solucion=models.CharField(max_length=50)
         tipo = models.CharField(

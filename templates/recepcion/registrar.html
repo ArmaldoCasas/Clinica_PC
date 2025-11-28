@@ -6,26 +6,19 @@
         <h2>Por favor registre su problema</h2>
     </div>
     <div class="card-body">
-        {% if mensaje %}
-        <div class="alert alert-success" role="alert">
-            {{ mensaje }}
-        </div>
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success">
+                {{ message }}
+                {% if 'success' in message.tags %}
+                <a href="{% url 'listado_equipos' %}" class="alert-link">Ir al listado?</a>
+                {% endif %}
+            </div>
+            {% endfor %}
         {% endif %}
         <form method="post">
             {% csrf_token %}
-            {{form.as_p}}
-            <div class="mb-3">
-                <label for="cliente" class="form-label">Nombre del Cliente</label>
-                <input type="text" name="cliente" id="cliente" class="form-control" placeholder="Nombre del Cliente" required>
-            </div>
-            <div class="mb-3">
-                <label for="equipo" class="form-label">Equipo</label>
-                <input type="text" name="equipo" id="equipo" class="form-control" placeholder="Equipo" required>
-            </div>
-            <div class="mb-3">
-                <label for="problema" class="form-label">Problema</label>
-                <input type="text" name="problema" id="problema" class="form-control" placeholder="Problema" required>
-            </div>
+            {{formulario_recepcion.as_p}}
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
         </div>

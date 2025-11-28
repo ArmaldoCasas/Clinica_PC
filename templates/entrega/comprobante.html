@@ -10,23 +10,27 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Cliente</th>
-                    <th>Equipo</th>
+                    <th>Cliente+Equipo</th>
                     <th>Diagnóstico</th>
                     <th>Solución</th>
                     <th>Estado</th>
                     <th>Observaciones</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for entrega in entregas %}
                 <tr>
-                    <td>{{ entrega.cliente }}</td>
-                    <td>{{ entrega.equipo }}</td>
-                    <td>{{ entrega.diagnostico }}</td>
-                    <td>{{ entrega.solucion }} {{ entrega.tipo }}</td>
+                    <td>{{ entrega.paciente }}</td>
+                    <td>{{ entrega.paciente.Equipo_diagnosticado.diagnostico|default:"PENDIENTE" }}</td>
+                    <td>{{ entrega.paciente.Equipo_diagnosticado.solucion|default:"PENDIENTE" }}</td>
                     <td>{{ entrega.estado }}</td>
                     <td>{{ entrega.observaciones }}</td>
+                    <td>
+                        <a href="{% url 'editar_reporte' entrega.pk %}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'eliminar_reporte' entrega.pk %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+
                 </tr>
                 {% endfor %}
             </tbody>

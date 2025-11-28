@@ -6,45 +6,23 @@
     <div class="card-header">
         <h2>Evaluar Diagnóstico</h2>
     </div>
+    
     <div class="card-body">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+                {% if 'success' in message.tags %}
+                <a href="{% url 'listado_diagnosticos' %}" class="alert-link">Ir al listado</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% endif %}
         <form method="post">
             {% csrf_token %}
-            {{form.as_p}}
-            <div class="mb-3">
-                <label for="estudiante" class="form-label">Nombre del Estudiante</label>
-                <input type="text" name="estudiante" id="estudiante" class="form-control" placeholder="Nombre del Estudiante" required>
-            </div>
-            <div class="mb-3">
-                <label for="equipo" class="form-label">Equipo</label>
-                <select name="equipo" id="equipo" class="form-select" required>
-                    <option value="">Seleccione un equipo</option>
-                    {% for e in recepcion_equipos %}
-                        <option value="{{ e.equipo }}">{{ e.cliente }}/{{ e.equipo }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="diagnostico" class="form-label">Diagnóstico</label>
-                <input name="diagnostico" id="diagnostico" class="form-control" placeholder="Diagnóstico"  required></input>
-            </div>
-            <div class="mb-3">
-                <label for="solucion" class="form-label">Solución</label>
-                <input name="solucion" id="solucion" class="form-control" placeholder="Solución" required></input>
-            </div>
-            <div class="mb-3">
-                <label for="tipo" class="form-label">Tipo</label>
-                <select name="tipo" id="tipo" class="form-select" required>
-                    <option value="correctiva">Correctiva</option>
-                    <option value="preventiva">Preventiva</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Registrar Diagnóstico</button>
+            {{formulario_diagnostico.as_p}}
+            <button type="submit" class="btn btn-primary">Evaluar Diagnóstico</button>
         </form>
-        {% if mensaje %}
-        <div class="alert alert-success mt-3" role="alert">
-            {{ mensaje }}
-        </div>
-        {% endif %}
-    </div>
+
 </div>
 {% endblock %}
