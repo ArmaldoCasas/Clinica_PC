@@ -2,7 +2,7 @@ from django.db import models
 
 #EL paciente tiene un cliente su equipo y un problema que quiere solucionar
 class Paciente(models.Model):
-    cliente =  models.CharField(max_length=50)
+    cliente =  models.CharField(max_length=50,unique=True)
     equipo =  models.CharField(max_length=50)
     problema =  models.CharField(max_length=50)
     def __str__(self):

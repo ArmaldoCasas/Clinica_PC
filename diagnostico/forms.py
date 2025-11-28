@@ -7,8 +7,11 @@ class EstudianteForm(forms.ModelForm):
         model = Estudiante 
         fields = ["estudiante","equipo","diagnostico","solucion","tipo"]
         widgets = {
-            "diagnostico": forms.TextInput(attrs={"placeholder":"Diagnostico"}),
-            "solucion": forms.TextInput(attrs={"placeholder":"Soolucion"}),
+            "estudiante": forms.TextInput(attrs={"class":"form-control","placeholder":"Estudiante"}),
+            "equipo": forms.Select(attrs={"class":"form-select","placeholder":"Equipo"}),
+            "diagnostico": forms.TextInput(attrs={"class":"form-control","placeholder":"Diagnostico"}),
+            "solucion": forms.TextInput(attrs={"class":"form-control","placeholder":"Solucion"}),
+            "tipo": forms.Select(attrs={"class":"form-select","placeholder":"Tipo"}),
         }
         labels={
             "estudiante":"Nombre del Estudiante",

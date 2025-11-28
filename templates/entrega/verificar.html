@@ -1,26 +1,43 @@
 {% extends "base.html" %}
-{% block title %}Verificar Entrega{% endblock %}
+{% block title %}Verificar Estado de Entrega{% endblock %}  
+
 {% block content %}
-<div class="card">
-    <div class="card-header">
-        <h2>Verificar Entrega</h2>
-    </div>
-    <div class="card-body">
-        <form method="get">
-            <div class="mb-3">
-                <label for="cliente" class="form-label">Nombre del Cliente</label>
-                <input type="text" name="cliente" id="cliente" class="form-control" placeholder="Nombre del Cliente" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Verificar</button>
-        </form>
-
-        {% if mensaje %}
-        <div class="alert alert-info mt-3" role="alert">
-            {{ mensaje }}
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+             <h3 class="text-center mb-4 text-secondary">Verificar Estado</h3>
+             <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ formulario_busqueda.paciente_a_buscar }}
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </form>
         </div>
+
+        {% if reporte_resultado %}
+            <div class="card-body">
+                <div class="text-center py-2">
+                    <p class="text-muted mb-1">Resultado para:</p>
+                    <h4>{{ reporte_resultado.paciente }}</h4>
+
+                    {% if reporte_resultado.existe %}
+                        {% if reporte_resultado.estado == 'Entregado' %}
+                            <h2 class="text-success">ENTREGADO</h2>
+                        {% elif reporte_resultado.estado == 'Devuelto' %}
+                            <h2 class="text-danger">DEVUELTO</h2>
+                        {% else %}
+                            <h2 class="text-warning">PENDIENTE</h2>
+                        {% endif %}
+                    {% else %}
+                        <p>No hay reporte para este equipo.</p>
+                    {% endif %}
+                </div>
+            </div>
         {% endif %}
-
-
+        
     </div>
 </div>
 {% endblock %}

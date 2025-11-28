@@ -11,6 +11,7 @@
             <th>Diagnóstico</th>
             <th>Solución</th>
             <th>Tipo</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,10 @@
                 {% else %}
                     Preventivo
                 {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'editar_diagnostico' diagnostico.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'eliminar_diagnostico' diagnostico.id %}" class="btn btn-danger btn-sm">Eliminar</a>
             </td>
         </tr>
         {% endfor %}

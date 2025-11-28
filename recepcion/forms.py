@@ -7,7 +7,14 @@ class RecepcionForm(forms.ModelForm):
         model = Paciente 
         fields = ["cliente","equipo","problema"]
         widgets = {
-            "problema": forms.Textarea(attrs={"rows":2})
+            "cliente": forms.TextInput(attrs={"class": "form-control", "placeholder": "Nombre del Cliente"}),
+            "equipo": forms.TextInput(attrs={"class": "form-control", "placeholder": "Equipo"}),
+            "problema": forms.Textarea(attrs={"class": "form-control", "rows": 2, "placeholder": "Problema"})
+        }
+        error_messages = {
+            "cliente": {
+                "unique": "Ya existe un cliente registrado con este nombre."
+            }
         }
 
 
