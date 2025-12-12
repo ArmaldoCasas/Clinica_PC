@@ -11,7 +11,6 @@ def verificar_entrega(request):
         return redirect('login_view')
     formulario_busqueda = ReporteBusquedaForm()
     reporte_resultado = None
-    
     if request.method == "POST":
         formulario_busqueda = ReporteBusquedaForm(request.POST)
         if formulario_busqueda.is_valid():
